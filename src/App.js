@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Button from './button';
+import {Button, ButtonByHook} from './button';
+import Select from './select'
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class App extends Component {
     return (
       <div>
         <div>
-          <h1>button</h1>
+          <h1>Button</h1>
           <h2>type</h2>
           <Button>primary</Button>
           <Button type='danger'>danger</Button>
@@ -32,6 +33,11 @@ class App extends Component {
           <Button icon="icon-search" circle={true}></Button>
           <h2>function</h2>
           <Button onClick={()=>{console.log(1111)}}>primary</Button>
+          <ButtonByHook onClick={()=>{console.log(1111)}}>primary</ButtonByHook>
+        </div>
+        <div>
+          <h1>Select</h1>
+          <Select></Select>
         </div>
       </div>
     );

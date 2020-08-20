@@ -1,0 +1,23 @@
+@import "../../base/base.less";
+
+.fld-select {
+    position: relative;
+    &_input {
+        padding: 0 30px 0 15px;
+        width: 120px;
+        height: 24px;
+        border: 1px solid @fld-BF-1;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 24px;
+        &:hover {
+            border-color: @fld-INFO;
+        }
+    }
+    &_position {
+        position: absolute;
+        left: 140px;
+        top: 4px;
+        color: @fld-BF-1;
+    }
+}

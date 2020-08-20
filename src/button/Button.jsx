@@ -9,9 +9,9 @@ class Button extends Component {
     this.state = {};
   }
   handleClick = () => {
-      if(!this.props.onClick) return
-      this.props.onClick() 
-  }
+    if (!this.props.onClick) return;
+    this.props.onClick();
+  };
   render() {
     const btnClassName = classnames({
       "fld-btn": true,
@@ -21,12 +21,13 @@ class Button extends Component {
       "fld-btn_circle": this.props.circle,
     });
     return (
-      <button className={btnClassName} onClick={this.handleClick} >
-        {this.props.icon ? (<span className={`iconfont fld-btn_icon ${this.props.icon}`} />) : null}
+      <button className={btnClassName} onClick={this.handleClick}>
+        {this.props.icon ? (
+          <span className={`iconfont fld-btn_icon ${this.props.icon}`} />
+        ) : null}
         {this.props.children}
       </button>
-    ) 
-
+    );
   }
 }
 
@@ -36,7 +37,7 @@ Button.defaultProps = {
   size: "default",
   disabled: false,
   circle: false,
-  icon: '',
+  icon: "",
 };
 
 Button.propTypes = {
@@ -45,6 +46,7 @@ Button.propTypes = {
   size: PropTypes.oneOf(["default", "small", "large"]),
   disabled: PropTypes.bool,
   circle: PropTypes.bool,
+  icon: PropTypes.string,
 };
 
 export default Button;

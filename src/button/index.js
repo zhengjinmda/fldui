@@ -1,3 +1,8 @@
 import Button from './Button'
+import ButtonByHook from './ButtonByHook'
 
-export default Button
+export {
+  Button,
+  ButtonByHook
+}
+    
