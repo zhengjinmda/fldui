@@ -27,7 +27,7 @@ class App extends Component {
           <Button disabled={true}>disabled</Button>
           <h2>circle</h2>
           <Button circle={true}>圆</Button>
-          <Button circle={true}>Circle</Button>
+          <Button circle={true}>C</Button>
           <h2>icon</h2>
           <Button icon="icon-search">icon</Button>
           <Button icon="icon-search" circle={true}></Button>
@@ -37,7 +37,11 @@ class App extends Component {
         </div>
         <div>
           <h1>Select</h1>
-          <Select></Select>
+          <Select />
+          <br />
+          <div>1111</div>
+          <Select disabled={true} />
+          <div style={{height: '300px'}}></div>
         </div>
       </div>
     );
