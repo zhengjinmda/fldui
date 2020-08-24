@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import {Button, ButtonByHook} from './button';
 import Select from './select'
+import Toast from './toast';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {}
+  }
+
+  showToast = () => {
   }
 
   render() {
@@ -41,7 +45,10 @@ class App extends Component {
           <br />
           <div>1111</div>
           <Select disabled={true} />
-          <div style={{height: '300px'}}></div>
+        </div>
+        <div>
+          <h1>toast</h1>
+          <Button onClick={this.showToast}>toast</Button>
         </div>
       </div>
     );

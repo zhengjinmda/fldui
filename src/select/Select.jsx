@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import "./styles/fld-select.less";
+import onclickoutside from "react-onclickoutside";
 
 class Select extends Component {
   constructor(props) {
@@ -24,7 +25,14 @@ class Select extends Component {
     this.setState({
       open: !this.state.open,
       value: item.value,
-      label: item.label
+      label: item.label,
+    });
+  };
+
+  handleClickOutside = () => {
+    if (this.props.disabled) return;
+    this.setState({
+      open: this.state.open,
     });
   };
 
@@ -52,7 +60,8 @@ class Select extends Component {
                   {this.props.dropdownList.map((item) => {
                     const fldSelectDropdownItem = classnames({
                       "fld-select_dropdownItem": true,
-                      "fld-select_dropdownItem__select": this.state.value === item.value
+                      "fld-select_dropdownItem__select":
+                        this.state.value === item.value,
                     });
                     return (
                       <li
@@ -81,16 +90,13 @@ Select.defaultProps = {
     { value: "选项2", label: "lucy" },
     { value: "选项3", label: "disabled" },
     { value: "选项4", label: "tom" },
-    { value: "选项5", label: "jack" },
-    { value: "选项6", label: "lucy" },
-    { value: "选项7", label: "disabled" },
-    { value: "选项8", label: "tom" },
   ],
   disabled: false,
 };
 
 Select.propTypes = {
   inputValue: PropTypes.object,
+  disabled: PropTypes.bool
 };
 
-export default Select;
+export default onclickoutside(Select);
