@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Button, ButtonByHook} from './button';
 import Select from './select'
-import Toast from './toast';
 
 class App extends Component {
   constructor(props) {

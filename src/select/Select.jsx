@@ -32,7 +32,7 @@ class Select extends Component {
   handleClickOutside = () => {
     if (this.props.disabled) return;
     this.setState({
-      open: this.state.open,
+      open: false,
     });
   };
 
@@ -99,4 +99,4 @@ Select.propTypes = {
   disabled: PropTypes.bool
 };
 
-export default onclickoutside(Select);
+export default onclickoutside(Select, Select.handleClickOutside);
