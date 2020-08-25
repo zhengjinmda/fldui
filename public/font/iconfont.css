@@ -1,10 +1,10 @@
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1597919813133'); /* IE9 */
-  src: url('iconfont.eot?t=1597919813133#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAOIAAsAAAAAB6gAAAM8AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqCXIJCATYCJAMQCwoABCAFhG0HThu6BhEVlPVkf4EihynYjyyy2x3dd2AHSKQy4/k+WQYwF4gggT8AAAAAIB8aV/8GuzcrpqOSoQi7fnZWq0mh/OWh2K+9/bt3mHVSEi1FxEql0ag6naGVCw2TkNh068U3uz3Dgo6sbzu8zP2SgqeXhrceQAAB1AMLU7Ny77M+AaH/8wU5O+G/4gPgf46ZLhIHlt+2dolqimga7Q1wPKABRTWNbAdyB8Q3jF15EaeBAORseSMLCWl56MYZkwiAnDQ3VqM75cNxlhQIacnKQq60iOayuW+EJf/nyYc4BEqSjJlZe/F1mHm2+xbO/mfFRZCM5wTA1gEM4A3gQA5K3TUyjHlj5MrflACAIFD4bPe56Vu4ZSg21KTWLaDvPx4F0oYKlQDAD6rYiUlscaxpggwg8C28ABSAF6IVvRNlYJVbrBki7GXtgnf094+ra8itbyzMLszpzcnL7sjPLSiWU2z6aUWK6N2Ho9yCvbdfvny8evV88eL+/PnfUt4CYVJQsO03e2ku2BzZmjPlb8xtjWh9dra3jesPIbQM4v9q8dA2uLo6qD91lauOwMr18SzrcedW7Pgiixo1Q5j46RYHnpQ38t9w3/xz3ay/et343VzP8lVnChRnVAgl8S4nnQ+9N1TDm/dC3X1dw717dy9NW3Bw0KBVFfVwxMyg7HqxoRkXjL7spqkCSzxmlJ+Qb3P7J/0ObvhOtis1E2sBgHd1vfGwzqLAtuFNS1pLfomkZRNXZYaFlyy3xVohF0DAvRXJyQE/IgXofRxDa2pNAojWFANlxQYYwRnJsd4goeAHUkIkyHlJXK9g0COR6gF4mgBAaF0BSu0WMFoPkBz7ASTMfoGUNgC5ghjbUcE1FIebI6MSzOH1g0pTbyybbILiFIuhVZyU+eQHsquCEPlhNnnFHnmMOe5dxCIGDFMHF3Aeti2BZapRi1+K2CQITNmHfE3daOPIqARz8PqBSlNv3PayyX0/xWJoFdc0VPgfyK7qHkR8YQvkVd23ariWd9y7iIkYYJg6cAFObM0YAVs+rEYtvrJHxCYC1Mq0Vfvza7sn3AG9jGMrmsioaNkeVaoXGjxN9ucsXrak8qovFg4V63I0Ag==') format('woff2'),
-  url('iconfont.woff?t=1597919813133') format('woff'),
-  url('iconfont.ttf?t=1597919813133') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-  url('iconfont.svg?t=1597919813133#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1598326119429'); /* IE9 */
+  src: url('iconfont.eot?t=1598326119429#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAATkAAsAAAAACvQAAASWAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDdAqIBIZCATYCJAMgCxIABCAFhG0HgQIbVgkRFZyfyX4exuA2rTn0uVn0L0O4WcRp9UcTjfc9A9/rmzQpHgSdzC/Be2IPwP4/m1KxmG9l6ha1KRUzQj4XcsI94GrLaLLOXbaigJvpPkJZEvAP+o/7lW4kfrCtZ7vtktHXrU0HdBzZdGQxXo5nMbqaF7cO9u1AAKjCkjsSn7h5iCQwkJqgrr3FIEhyWMAiEAJJLwScykBmgIfETeTOA2G69vnkDUpJAAeegg7NblwaoGjZ6lWXjlBCuYKCtDgXgNu2AAXgDmAoXhromQRqZNxRqH5KGSoBaPO/SAF5Xi7JNbklH8jNryKUSk9vaEimHtgNEMGBgoHv4D+PCCCNOvD1anFApZLE0pZgAgdtDSZQaFswgUF7ABN4aIdgAgFedbUYYKy0tzbABIgRQI4yvHmGgIHyJglUUFfX1j4pLUROR11bhZHQcSnLwfXsAAzyJx8rXpzceH50/dnTSXWoi+zXuSlfqs6bR0pHzldTmzwXxSPm5GsorJKq6qR5hIycn2XzqzmTDAvzX9fNG2lUVChvOn+9QUHRx9q5I/TzC9iAfphLUUzUZGXTadbchfqxmkZFh78bAtYq1Cef/Cw33Hi9aPKhkQcn7R9xoGjvZF/tH+45RwfHZz6o1VyLTv1EtQlnVS02r7t581ihOLlx4+j69SehOtRF9vzNm4+T1lWUmDt5/sjfFgsXLNCfsyaUs15O5P9VzUjZbWZtzW5zk7W1rDg3aay+eGJSFBmQE6LYA1sVaGWPF923if3FFkmkc423S/MQxotpJsHDs8RpwoQCj9Jb3xhr3LNn755GdC9WuPdEKYzdQ0xIZY2R87HCPZjiWJGlj3sVxBu2b8/pq0Ub1qwxMWnQPT/WmMfLkrRydMp+yxuRHFfr5Lxo/sNeb4fn3WQGhpr7BfH2WNN+/zyrf2yVopolC0Wlr+vl3ctd8y3nC6/sq0lL60x+eIgLW9W30U+fKO/2Tx+3se3s48fNtn38pJbnuJoqFBNMufoqgtS6zErF7UTvbRoD5x07DTrno43Hjh2poUjh0qXdN0YbsMvE/nPzSxhHcaAt6QquGlBON9NoLYfeoXUH9Pdg0awPzVXh8G+SGgMA3B2ta8KeSgx0BAAJ3GbS4vCVJhzBvnKySuw9MEmS2CcheOumOACqfAZw0AZ0PShSZ5AYAYjOwAIOIiyAQoI9muHdgYca/EGAhChQhZuks9WgpxcoCFMB4GosAwJtm4CDJg4BhbYLaIa/D/4pKf8wLdIE+BwXv6TfQtzXk0A0DHD/EXMqHCbs2qfX74PhWUTa5RrlGKTicVzMFdz5FXBAFnGEujNKWjPMpLDxMrsbWJbArhQjoDo31Npt5fMs6J1yVNjIp0cChAYGsL5HGEcJDqbMrfk8H78PGDwWQkb0+RE8BiSFrxwryikkQK9onER9NuUtyh1DiaYxGCMJNmyZuYDFMwLmBu80AigtZ5gh5WrJn8ZiSTW56nX2nF4GoIpeKjWarXan2+sT/TlxtPCyVLiP8p38xAKpb7QgSgcZ4ZYnwcGsPEpBqetN9LkxYwky4I4xrYBIOkQIAA==') format('woff2'),
+  url('iconfont.woff?t=1598326119429') format('woff'),
+  url('iconfont.ttf?t=1598326119429') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1598326119429#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -17,6 +17,22 @@
 
 .icon-jiantou-copy-copy:before {
   content: "\e668";
+}
+
+.icon-alert_toast:before {
+  content: "\e632";
+}
+
+.icon-failure_toast:before {
+  content: "\e636";
+}
+
+.icon-success_toast:before {
+  content: "\e63a";
+}
+
+.icon-big:before {
+  content: "\e653";
 }
 
 .icon-loading:before {

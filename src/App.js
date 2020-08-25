@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Button, ButtonByHook} from './button';
 import Select from './select'
+import Toast from './toast'
 
 class App extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class App extends Component {
     this.state = {}
   }
 
-  showToast = () => {
+  showToast = (type) => {
+    Toast[type](type)
   }
 
   render() {
@@ -42,12 +44,14 @@ class App extends Component {
           <h1>Select</h1>
           <Select />
           <br />
-          <div>1111</div>
           <Select disabled={true} />
         </div>
         <div>
           <h1>toast</h1>
-          <Button onClick={this.showToast}>toast</Button>
+          <Button onClick={() => this.showToast('success')}>success toast</Button>
+          <Button type='danger' onClick={() => this.showToast('error')}>error toast</Button>
+          <Button type='warning' onClick={() => this.showToast('warning')}>warning toast</Button>
+          <Button type='info' onClick={() => this.showToast('info')}>info toast</Button>
         </div>
       </div>
     );

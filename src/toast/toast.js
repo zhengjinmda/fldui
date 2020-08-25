@@ -1,5 +1,4 @@
 import notificationDOM from './notification'
-// import './toast.less'
 
 let notification
 const notice = (type, content, duration = 2000, onClose) => {
@@ -20,7 +19,4 @@ export default {
     error(content, duration, onClose) {
         return notice('error', content, duration, onClose)
     },
-    loading(content, duration = 0, onClose) {
-        return notice('loading', content, duration, onClose)
-    }
 }
