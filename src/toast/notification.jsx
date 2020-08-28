@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Notice from "./notice";
 import classNames from "classnames";
@@ -23,18 +22,13 @@ class Notification extends Component {
     if (notices.every((item) => item.key !== notice.key)) {
       notices.push(notice);
       this.setState({ notices });
-      if (notice.duration > 0) {
-        setTimeout(() => {
-          this.removeNotice(notice.key);
-        }, notice.duration);
-      }
+      setTimeout(() => {
+        this.removeNotice(notice.key);
+      }, notice.duration);
     }
-    return () => {
-      this.removeNotice(notice.key);
-    };
   };
 
-  removeNotice = (key) => {
+  removeNotice = key => {
     const { notices } = this.state;
     this.setState({
       notices: notices.filter((notice) => {
@@ -72,20 +66,4 @@ class Notification extends Component {
   }
 }
 
-function createNotification() {
-  const div = document.createElement("div");
-  document.body.appendChild(div);
-  const ref = React.createRef();
-  ReactDOM.render(<Notification ref={ref} />, div);
-  return {
-    addNotice(notice) {
-      return ref.current.addNotice(notice);
-    },
-    destroy() {
-      ReactDOM.unmountComponentAtNode(div);
-      document.body.removeChild(div);
-    },
-  };
-}
-
-export default createNotification();
+export default Notification;

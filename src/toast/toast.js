@@ -1,8 +1,26 @@
-import notificationDOM from './notification'
+import React from 'react';
+import ReactDOM from "react-dom";
+import Notification from './notification'
+
+function createNotification() {
+    const div = document.createElement("div");
+    document.body.appendChild(div);
+    const ref = React.createRef();
+    ReactDOM.render(<Notification ref={ref} />, div);
+    return {
+        addNotice(notice) {
+            return ref.current.addNotice(notice);
+        },
+        destroy() {
+            ReactDOM.unmountComponentAtNode(div);
+            document.body.removeChild(div);
+        },
+    };
+}
 
 let notification
 const notice = (type, content, duration = 2000, onClose) => {
-    if (!notification) notification = notificationDOM
+    if (!notification) notification = createNotification()
     return notification.addNotice({ type, content, duration, onClose })
 }
 

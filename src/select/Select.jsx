@@ -83,8 +83,12 @@ class Select extends Component {
   }
 }
 
+
+
 Select.defaultProps = {
   inputValue: {},
+  defaultValue: {},
+  value: {},
   dropdownList: [
     { value: "选项1", label: "jack" },
     { value: "选项2", label: "lucy" },

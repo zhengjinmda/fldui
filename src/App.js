@@ -18,37 +18,37 @@ class App extends Component {
       <div>
         <div>
           <h1>Button</h1>
-          <h2>type</h2>
+          <h3>type</h3>
           <Button>primary</Button>
           <Button type='danger'>danger</Button>
           <Button type='warning'>warning</Button>
           <Button type='success'>success</Button>
           <Button type='info'>info</Button>
-          <h2>size</h2>
+          <h3>size</h3>
           <Button size='default'>default</Button>
           <Button size='large'>large</Button>
           <Button size='small'>small</Button>
-          <h2>disabled</h2>
+          <h3>disabled</h3>
           <Button disabled={true}>disabled</Button>
-          <h2>circle</h2>
+          <h3>circle</h3>
           <Button circle={true}>圆</Button>
           <Button circle={true}>C</Button>
-          <h2>icon</h2>
+          <h3>icon</h3>
           <Button icon="icon-search">icon</Button>
           <Button icon="icon-search" circle={true}></Button>
-          <h2>function</h2>
+          <h3>function</h3>
           <Button onClick={()=>{console.log(1111)}}>primary</Button>
           <ButtonByHook onClick={()=>{console.log(1111)}}>primary</ButtonByHook>
         </div>
         <div>
           <h1>Select</h1>
           <Select />
-          <br />
+          <h3>disabled</h3>
           <Select disabled={true} />
         </div>
         <div>
           <h1>toast</h1>
-          <Button onClick={() => this.showToast('success')}>success toast</Button>
+          <Button type='success' onClick={() => this.showToast('success')}>success toast</Button>
           <Button type='danger' onClick={() => this.showToast('error')}>error toast</Button>
           <Button type='warning' onClick={() => this.showToast('warning')}>warning toast</Button>
           <Button type='info' onClick={() => this.showToast('info')}>info toast</Button>
