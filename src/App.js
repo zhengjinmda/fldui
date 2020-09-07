@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {Button, ButtonByHook} from './button';
-import Select from './select'
+import { Button, ButtonByHook } from './button';
 import Toast from './toast'
+import Select from './select'
+const { Option } = Select;
 
 class App extends Component {
   constructor(props) {
@@ -37,14 +38,19 @@ class App extends Component {
           <Button icon="icon-search">icon</Button>
           <Button icon="icon-search" circle={true}></Button>
           <h3>function</h3>
-          <Button onClick={()=>{console.log(1111)}}>primary</Button>
-          <ButtonByHook onClick={()=>{console.log(1111)}}>primary</ButtonByHook>
+          <Button onClick={() => { console.log(1111) }}>primary</Button>
+          <ButtonByHook onClick={() => { console.log(1111) }}>primary</ButtonByHook>
         </div>
         <div>
           <h1>Select</h1>
-          <Select />
+          {/* <Select /> */}
+          <Select defaultValue='1'>
+            <Option value="1">一</Option>
+            <Option value="2">二</Option>
+            <Option value="3">三</Option>
+          </Select>
           <h3>disabled</h3>
-          <Select disabled={true} />
+          {/* <Select disabled={true} /> */}
         </div>
         <div>
           <h1>toast</h1>

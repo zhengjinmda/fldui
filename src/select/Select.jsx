@@ -1,21 +1,59 @@
 import React, { Component } from "react";
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import propTypes from "prop-types";
 import "./styles/fld-select.less";
 import onclickoutside from "react-onclickoutside";
 
 class Select extends Component {
   constructor(props) {
     super(props);
+
+    let value;
+    if ("value" in props) {
+      value = props.value;
+    } else {
+      value = props.defaultValue;
+    }
+    const label = this.getLabelByValue(props.children, value);
+
     this.state = {
       open: false,
-      value: this.props.inputValue.value,
-      label: this.props.inputValue.label,
+      value,
+      label,
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    let value;
+    if ("value" in nextProps) {
+      value = nextProps.value;
+    } else {
+      value = this.state.value;
+    }
+    const label = this.getLabelByValue(nextProps.children, value);
+    this.setState({
+      value,
+      label,
+    });
+  }
+
+  getLabelByValue(children, value) {
+    if (value === undefined) {
+      return null;
+    }
+
+    let label = null;
+    React.Children.forEach(children, (child) => {
+      if (value === child.props.value) {
+        label = child.props.children;
+      }
+    });
+
+    return label;
+  }
+
   handleClick = () => {
-    if (this.props.disabled) return;
+    if (this.props.disabled) return false;
     this.setState({
       open: !this.state.open,
     });
@@ -36,6 +74,19 @@ class Select extends Component {
     });
   };
 
+  getMenus() {
+    let el = [];
+    React.Children.forEach(this.props.children, (child) => {
+      let value = child.props.value;
+      let label = child.props.children;
+      el.push({
+        value: value,
+        label: label,
+      });
+    });
+    return el;
+  }
+
   render() {
     const fldSelect = classnames({
       "fld-select": true,
@@ -46,18 +97,19 @@ class Select extends Component {
       "fld-select_dropdown__open": this.state.open,
     });
 
+    let el = this.getMenus();
     return (
       <>
-        <div className={fldSelect}>
+        <div style={this.props.style} className={fldSelect}>
           <div>
             <div className="fld-select_input" onClick={this.handleClick}>
               {this.state.label}
               <i className="iconfont icon-jiantou-copy-copy fld-select_position"></i>
             </div>
-            <div className={fldSelectDropdown}>
+            <div className={fldSelectDropdown} style={this.props.style}>
               <div className="fld-select_dropdownWrap">
                 <ul className="fld-select_dropdownList">
-                  {this.props.dropdownList.map((item) => {
+                  {el.map((item) => {
                     const fldSelectDropdownItem = classnames({
                       "fld-select_dropdownItem": true,
                       "fld-select_dropdownItem__select":
@@ -83,24 +135,19 @@ class Select extends Component {
   }
 }
 
-
-
 Select.defaultProps = {
-  inputValue: {},
-  defaultValue: {},
-  value: {},
-  dropdownList: [
-    { value: "选项1", label: "jack" },
-    { value: "选项2", label: "lucy" },
-    { value: "选项3", label: "disabled" },
-    { value: "选项4", label: "tom" },
-  ],
   disabled: false,
+  style: {
+    width: 160,
+  },
 };
 
 Select.propTypes = {
-  inputValue: PropTypes.object,
-  disabled: PropTypes.bool
+  defaultValue: propTypes.oneOfType([propTypes.string, propTypes.number]),
+  value: propTypes.oneOfType([propTypes.number, propTypes.string]),
+  disabled: propTypes.bool,
+  style: propTypes.object,
+  onChange: propTypes.func,
 };
 
 export default onclickoutside(Select, Select.handleClickOutside);
