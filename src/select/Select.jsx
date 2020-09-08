@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import classnames from "classnames";
 import propTypes from "prop-types";
 import "./styles/fld-select.less";
+import classNames from 'classnames';
 import onclickoutside from "react-onclickoutside";
+import { CSSTransition } from "react-transition-group";
 
 class Select extends Component {
   constructor(props) {
     super(props);
-
     let value;
     if ("value" in props) {
       value = props.value;
@@ -60,6 +61,11 @@ class Select extends Component {
   };
 
   getDropdownItem = (item) => {
+
+    if('onChange' in this.props) {
+      this.props.onChange(item)
+    }
+
     this.setState({
       open: !this.state.open,
       value: item.value,
@@ -96,6 +102,14 @@ class Select extends Component {
       "fld-select_dropdown": true,
       "fld-select_dropdown__open": this.state.open,
     });
+    const fldSelectDropdownWrapAnimation = classNames({
+      "fld-select_dropdownWrap__animation": true,
+      notice: true,
+    });
+    const fldSelectArrowsAnimation = classNames({
+      "fld-select_arrows__animation": true,
+      notice: true,
+    })
 
     let el = this.getMenus();
     return (
@@ -104,30 +118,50 @@ class Select extends Component {
           <div>
             <div className="fld-select_input" onClick={this.handleClick}>
               {this.state.label}
-              <i className="iconfont icon-jiantou-copy-copy fld-select_position"></i>
+              <CSSTransition
+                in={this.state.open}
+                addEndListener={(node, done) => {
+                  if(!this.state.open) {
+                    done()
+                  }
+                }}
+                classNames={fldSelectArrowsAnimation}
+              >
+              <i className='iconfont icon-jiantou-copy-copy fld-select_arrows' ></i>
+              </CSSTransition>
             </div>
-            <div className={fldSelectDropdown} style={this.props.style}>
-              <div className="fld-select_dropdownWrap">
-                <ul className="fld-select_dropdownList">
-                  {el.map((item) => {
-                    const fldSelectDropdownItem = classnames({
-                      "fld-select_dropdownItem": true,
-                      "fld-select_dropdownItem__select":
-                        this.state.value === item.value,
-                    });
-                    return (
-                      <li
-                        onClick={() => this.getDropdownItem(item)}
-                        className={fldSelectDropdownItem}
-                        key={item.value}
-                      >
-                        {item.label}
-                      </li>
-                    );
-                  })}
-                </ul>
+            <CSSTransition
+              in={this.state.open}
+              addEndListener={(node, done) => {
+                if(!this.state.open) {
+                  done()
+                }
+              }}
+              classNames={fldSelectDropdownWrapAnimation}
+            >
+              <div className={fldSelectDropdown} style={this.props.style}>
+                <div className="fld-select_dropdownWrap">
+                  <ul className="fld-select_dropdownList">
+                    {el.map((item) => {
+                      const fldSelectDropdownItem = classnames({
+                        "fld-select_dropdownItem": true,
+                        "fld-select_dropdownItem__select":
+                          this.state.value === item.value,
+                      });
+                      return (
+                        <li
+                          onClick={() => this.getDropdownItem(item)}
+                          className={fldSelectDropdownItem}
+                          key={item.value}
+                        >
+                          {item.label}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
-            </div>
+            </CSSTransition>
           </div>
         </div>
       </>
@@ -150,4 +184,4 @@ Select.propTypes = {
   onChange: propTypes.func,
 };
 
-export default onclickoutside(Select, Select.handleClickOutside);
+export default onclickoutside(Select);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, ButtonByHook } from './button';
 import Toast from './toast'
 import Select from './select'
+import Test from './test.jsx'
 const { Option } = Select;
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Test />
         <div>
           <h1>Button</h1>
           <h3>type</h3>
@@ -44,13 +46,19 @@ class App extends Component {
         <div>
           <h1>Select</h1>
           {/* <Select /> */}
-          <Select defaultValue='1'>
+          <Select defaultValue='1' style={{width: 160}}>
             <Option value="1">一</Option>
             <Option value="2">二</Option>
             <Option value="3">三</Option>
           </Select>
           <h3>disabled</h3>
-          {/* <Select disabled={true} /> */}
+          <Select disabled={true} />
+          <h3>onChange</h3>
+          <Select value='2' onChange={(item) => console.log(item.value, item.label)}>
+            <Option value="1">一</Option>
+            <Option value="2">二</Option>
+            <Option value="3">三</Option>
+          </Select>
         </div>
         <div>
           <h1>toast</h1>

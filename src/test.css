@@ -1,0 +1,45 @@
+.fld-test_content {
+  width: 120px;
+  max-height: 120px;
+  overflow: scroll;
+  background-color: lightblue;
+}
+
+.fld-test_animation.notice-enter {
+  opacity: 0.01;
+  transform-origin: 50% 0;
+  transform: scaleY(0);
+}
+.fld-test_animation.notice-enter-active {
+  opacity: 1;
+  transform-origin: 50% 0;
+  transform: scaleY(1);
+  transition: all 300ms ease-out;
+}
+.fld-test_animation.notice-exit {
+  transform-origin: 50% 0;
+  opacity: 1;
+  transform: scaleY(1);
+}
+.fld-test_animation.notice-exit-active {
+  opacity: 0;
+  transform-origin: 50% 0;
+  transform: scaleY(0);
+  transition: all 300ms ease-out;
+}
+
+
+.animation.notice-enter {
+  transform: rotate(0);
+}
+.animation.notice-enter-active {
+  transform: rotate(90deg);
+  transition: all 200ms ease-out;
+}
+.animation.notice-exit {
+  transform: rotate(90deg);
+}
+.animation.notice-exit-active {
+  transform: rotate(0);
+  transition: all 200 ease-out;
+}
