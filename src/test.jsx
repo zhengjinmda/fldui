@@ -32,18 +32,19 @@ class App extends Component {
         </div>
         <CSSTransition
           in={this.state.open}
-          addEndListener={(node, done) => {
-            if(!this.state.open) {
-              done()
-            }
-          }}
+          // addEndListener={(node, done) => {
+          //   if(!this.state.open) {
+          //     done()
+          //   }
+          // }}
+          timeout={1000}
           classNames={fldTestAnimation}
         >
           <div className="fld-test_content">hehe</div>
         </CSSTransition>
         <CSSTransition
           in={this.state.open}
-          timeout={2000}
+          timeout={20000}
           classNames={fldToastAnimation}
         >
           <div className="fld-test_content">

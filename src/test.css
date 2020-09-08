@@ -3,6 +3,7 @@
   max-height: 120px;
   overflow: scroll;
   background-color: lightblue;
+  transform: scaleY(0);
 }
 
 .fld-test_animation.notice-enter {
@@ -33,13 +34,13 @@
   transform: rotate(0);
 }
 .animation.notice-enter-active {
-  transform: rotate(90deg);
+  transform: rotate(-180deg);
   transition: all 200ms ease-out;
 }
 .animation.notice-exit {
-  transform: rotate(90deg);
+  transform: rotate(-180deg);
 }
 .animation.notice-exit-active {
   transform: rotate(0);
-  transition: all 200 ease-out;
+  transition: all 200ms ease-out;
 }
