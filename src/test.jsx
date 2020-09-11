@@ -12,59 +12,51 @@ class App extends Component {
   }
 
   render() {
-    const fldToastAnimation = classNames({
-      "fld-test_animation": true,
-      notice: true,
-    });
-    const fldTestAnimation = classNames({
-      animation: true,
-      notice: true,
-    });
     return (
       <>
-        <div
+        <button
           onClick={() => {
-            console.log(this.state.open);
             this.setState({ open: !this.state.open });
           }}
         >
-          hehe
-        </div>
+          显示/隐藏
+        </button>
+
         <div>
-          <div className={this.state.open ? "show content" : "hidden content"}>hehe</div>
-        </div>
-        <CSSTransition
-          in={this.state.open}
-          // addEndListener={(node, done) => {
-          //   if(!this.state.open) {
-          //     done()
-          //   }
-          // }}
-          timeout={1000}
-          classNames={fldTestAnimation}
-        >
-          <div className="fld-test_content">hehe</div>
-        </CSSTransition>
-        <CSSTransition
-          in={this.state.open}
-          timeout={20000}
-          classNames={fldToastAnimation}
-        >
-          <div className="fld-test_content">
-            <ul>
-              <li>hehe</li>
-              <li>hehe</li>
-              <li>hehe</li>
-              <li>hehe</li>
-              <li>hehe</li>
-              <li>hehe</li>
-              <li>hehe</li>
-              <li>hehe</li>
-              <li>hehe</li>
-              <li>hehe</li>
-            </ul>
+          <div className={this.state.open ? "show content" : "hidden content"}>
+            hehe
           </div>
-        </CSSTransition>
+        </div>
+
+        <div className="fld-test_content">
+          <ul>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+          </ul>
+        </div>
+
+        <div className={this.state.open ? "slide-up slide-content" : "slide-down slide-content"}>
+          <ul>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+            <li>hehe</li>
+          </ul>
+        </div>
       </>
     );
   }
