@@ -24,11 +24,14 @@ class App extends Component {
       <>
         <div
           onClick={() => {
-            console.log(this.state.open)
+            console.log(this.state.open);
             this.setState({ open: !this.state.open });
           }}
         >
           hehe
+        </div>
+        <div>
+          <div className={this.state.open ? "show content" : "hidden content"}>hehe</div>
         </div>
         <CSSTransition
           in={this.state.open}

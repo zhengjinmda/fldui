@@ -45,8 +45,7 @@ class App extends Component {
         </div>
         <div>
           <h1>Select</h1>
-          {/* <Select /> */}
-          <Select defaultValue='1' style={{width: 160}}>
+          <Select defaultValue='1' >
             <Option value="1">一</Option>
             <Option value="2">二</Option>
             <Option value="3">三</Option>
@@ -54,11 +53,13 @@ class App extends Component {
           <h3>disabled</h3>
           <Select disabled={true} />
           <h3>onChange</h3>
-          <Select value='2' onChange={(item) => console.log(item.value, item.label)}>
+          <Select defaultValue='2'>
             <Option value="1">一</Option>
             <Option value="2">二</Option>
             <Option value="3">三</Option>
           </Select>
+          <h3>data</h3>
+          <Select defaultValue='1' options={[{ value: '1', label: '一' }, { value: '2', label: '二' }, { value: '3', label: '三' },]} style={{ width: 160 }} />
         </div>
         <div>
           <h1>toast</h1>

@@ -1,44 +1,98 @@
 import React, { Component } from "react";
 import classnames from "classnames";
 import propTypes from "prop-types";
-import "./styles/fld-select.less";
-import classNames from 'classnames';
+import { isNodeFound } from "./isNodeFound";
+import ReactDOM from "react-dom";
+import classNames from "classnames";
 import onclickoutside from "react-onclickoutside";
 import { CSSTransition } from "react-transition-group";
+import "./styles/fld-select.less";
 
 class Select extends Component {
   constructor(props) {
     super(props);
-    let value;
+    let value, label;
+    this.selectRef = React.createRef();
     if ("value" in props) {
       value = props.value;
     } else {
       value = props.defaultValue;
     }
-    const label = this.getLabelByValue(props.children, value);
+    if (props.children === undefined && props.options) {
+      props.options.forEach((item) => {
+        if (item.value === value) {
+          label = item.label;
+        }
+      });
+    } else {
+      label = Select.getLabelByValue(props.children, value);
+    }
 
     this.state = {
       open: false,
       value,
       label,
+      options: [],
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    let value;
-    if ("value" in nextProps) {
-      value = nextProps.value;
-    } else {
-      value = this.state.value;
+  static getDerivedStateFromProps(props, state) {
+    let value, label;
+    let options = [];
+    if (props !== undefined) {
+      if ("value" in props) {
+        if (props.value !== value) {
+          value = props.value;
+        }
+      } else {
+        value = state.value;
+      }
     }
-    const label = this.getLabelByValue(nextProps.children, value);
-    this.setState({
+    if (props.children === undefined && props.options) {
+      options = props.options;
+      props.options.forEach((item) => {
+        if (item.value === value) {
+          label = item.label;
+        }
+      });
+    } else {
+      label = Select.getLabelByValue(props.children, value);
+      options = Select.getOptions(props.children);
+    }
+    return {
       value,
       label,
-    });
+      options,
+    };
   }
 
-  getLabelByValue(children, value) {
+  componentDidMount() {
+    if (this.props.children === undefined) {
+      this.setState({ options: this.props.options });
+    } else {
+      let el = Select.getOptions(this.props.children);
+      this.setState({
+        options: el,
+      });
+    }
+  }
+
+  // 获取 options
+  static getOptions(children) {
+    let el = [];
+    React.Children.forEach(children, (child) => {
+      let value = child.props.value;
+      let label = child.props.children;
+      el.push({
+        value: value,
+        label: label,
+      });
+    });
+    return el;
+  }
+
+  // 通过索引 value 获得 label
+  static getLabelByValue(children, value) {
     if (value === undefined) {
       return null;
     }
@@ -53,6 +107,7 @@ class Select extends Component {
     return label;
   }
 
+  // 点击 input 组件时 根据变量 open 来决定下拉框是否展示
   handleClick = () => {
     if (this.props.disabled) return false;
     this.setState({
@@ -61,11 +116,9 @@ class Select extends Component {
   };
 
   getDropdownItem = (item) => {
-
-    if('onChange' in this.props) {
-      this.props.onChange(item)
+    if ("onChange" in this.props) {
+      this.props.onChange(item);
     }
-
     this.setState({
       open: !this.state.open,
       value: item.value,
@@ -80,19 +133,6 @@ class Select extends Component {
     });
   };
 
-  getMenus() {
-    let el = [];
-    React.Children.forEach(this.props.children, (child) => {
-      let value = child.props.value;
-      let label = child.props.children;
-      el.push({
-        value: value,
-        label: label,
-      });
-    });
-    return el;
-  }
-
   render() {
     const fldSelect = classnames({
       "fld-select": true,
@@ -106,35 +146,29 @@ class Select extends Component {
       "fld-select_dropdownWrap__animation": true,
       notice: true,
     });
-    const fldSelectArrowsAnimation = classNames({
-      "fld-select_arrows__animation": true,
-      notice: true,
-    })
-
-    let el = this.getMenus();
     return (
       <>
-        <div style={this.props.style} className={fldSelect}>
+        <div
+          style={this.props.style}
+          className={fldSelect}
+          ref={this.selectRef}
+        >
           <div>
+            {/* 模拟input 框 */}
             <div className="fld-select_input" onClick={this.handleClick}>
               {this.state.label}
-              <CSSTransition
-                in={this.state.open}
-                addEndListener={(node, done) => {
-                  if(!this.state.open) {
-                    done()
-                  }
-                }}
-                classNames={fldSelectArrowsAnimation}
-              >
-              <i className='iconfont icon-jiantou-copy-copy fld-select_arrows' ></i>
-              </CSSTransition>
+              <i
+                className={`iconfont icon-jiantou-copy-copy fld-select_arrows ${
+                  this.state.open ? "fld-select_arrows__animationIn" : "fld-select_arrows__animationOut"
+                }`}
+              ></i>
             </div>
+            {/* 下拉框 */}
             <CSSTransition
               in={this.state.open}
               addEndListener={(node, done) => {
-                if(!this.state.open) {
-                  done()
+                if (!this.state.open) {
+                  done();
                 }
               }}
               classNames={fldSelectDropdownWrapAnimation}
@@ -142,22 +176,23 @@ class Select extends Component {
               <div className={fldSelectDropdown} style={this.props.style}>
                 <div className="fld-select_dropdownWrap">
                   <ul className="fld-select_dropdownList">
-                    {el.map((item) => {
-                      const fldSelectDropdownItem = classnames({
-                        "fld-select_dropdownItem": true,
-                        "fld-select_dropdownItem__select":
-                          this.state.value === item.value,
-                      });
-                      return (
-                        <li
-                          onClick={() => this.getDropdownItem(item)}
-                          className={fldSelectDropdownItem}
-                          key={item.value}
-                        >
-                          {item.label}
-                        </li>
-                      );
-                    })}
+                    {this.state.options !== undefined &&
+                      this.state.options.map((item) => {
+                        const fldSelectDropdownItem = classnames({
+                          "fld-select_dropdownItem": true,
+                          "fld-select_dropdownItem__select":
+                            this.state.value === item.value,
+                        });
+                        return (
+                          <li
+                            onClick={() => this.getDropdownItem(item)}
+                            className={fldSelectDropdownItem}
+                            key={item.value}
+                          >
+                            {item.label}
+                          </li>
+                        );
+                      })}
                   </ul>
                 </div>
               </div>

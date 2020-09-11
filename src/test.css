@@ -44,3 +44,36 @@
   transform: rotate(0);
   transition: all 200ms ease-out;
 }
+
+.content {
+  width: 120px;
+  height: 120px;
+  background-color: lightblue;
+}
+
+.show {
+  transform-origin: 50% 50%;
+  animation:show-item 200ms ease-in forwards;
+}
+.hidden {
+  transform-origin: 50% 50%;
+  animation:hide-item 200ms ease-in forwards;
+}
+
+@keyframes show-item{
+  0% {
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes hide-item{
+  0% {
+    transform: rotate(-180deg);
+  }
+  100%{
+    transform: rotate(0);
+  }
+}
