@@ -8,27 +8,41 @@ class App extends Component {
     super(props);
     this.state = {
       open: false,
+      hidden: false,
     };
   }
 
   render() {
+    const arrow = classNames({
+      "content": true,
+      "show": this.state.open,
+      "hidden": this.state.hidden,
+    })
+    const sild = classNames({
+      "slide-content": true,
+      "slide-up": this.state.open,
+      "slide-down": this.state.hidden,
+    })
     return (
       <>
         <button
           onClick={() => {
-            this.setState({ open: !this.state.open });
+            this.setState({
+              open: !this.state.open,
+              hidden: this.state.open,
+            });
           }}
         >
           显示/隐藏
         </button>
 
         <div>
-          <div className={this.state.open ? "show content" : "hidden content"}>
+          <div className={arrow}>
             hehe
           </div>
         </div>
 
-        <div className="fld-test_content">
+        <div className={sild}>
           <ul>
             <li>hehe</li>
             <li>hehe</li>
@@ -42,8 +56,7 @@ class App extends Component {
             <li>hehe</li>
           </ul>
         </div>
-
-        <div className={this.state.open ? "slide-up slide-content" : "slide-down slide-content"}>
+        <div className={sild}>
           <ul>
             <li>hehe</li>
             <li>hehe</li>

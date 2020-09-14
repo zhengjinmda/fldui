@@ -8,7 +8,7 @@ class Notification extends Component {
   constructor() {
     super();
     this.transitionTime = 300;
-    this.state = { notices: [] };
+    this.state = { notices: [], fadeOut: false};
   }
 
   getNoticeKey = () => {
@@ -21,19 +21,18 @@ class Notification extends Component {
     notice.key = this.getNoticeKey();
     if (notices.every((item) => item.key !== notice.key)) {
       notices.push(notice);
-      this.setState({ notices });
+      this.setState({ notices, fadeOut: true });
       setTimeout(() => {
         this.removeNotice(notice.key);
       }, notice.duration);
     }
   };
 
-  removeNotice = key => {
+  removeNotice = (key) => {
     const { notices } = this.state;
     this.setState({
       notices: notices.filter((notice) => {
         if (notice.key === key) {
-          if (notice.onClose) setTimeout(notice.onClose, this.transitionTime);
           return false;
         }
         return true;
@@ -62,6 +61,15 @@ class Notification extends Component {
           </CSSTransition>
         ))}
       </TransitionGroup>
+      // <>
+      //   <div className={fldToast}>
+      //     {notices.map((notice) => (
+      //       <div key={notice.key} className={`${ this.state.fadeOut ? "fld-toast_animation__fadeOut" : "fld-toast_animation__fadeIn"}`}>
+      //         <Notice {...notice} />
+      //       </div>
+      //     ))}
+      //   </div>
+      // </>
     );
   }
 }

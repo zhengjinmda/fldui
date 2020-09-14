@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import classnames from "classnames";
 import propTypes from "prop-types";
-import { isNodeFound } from "./isNodeFound";
-import ReactDOM from "react-dom";
-import classNames from "classnames";
 import onclickoutside from "react-onclickoutside";
-import { CSSTransition } from "react-transition-group";
 import "./styles/fld-select.less";
 
 class Select extends Component {
@@ -30,6 +26,7 @@ class Select extends Component {
 
     this.state = {
       open: false,
+      hidden: false,
       value,
       label,
       options: [],
@@ -110,8 +107,19 @@ class Select extends Component {
   // 点击 input 组件时 根据变量 open 来决定下拉框是否展示
   handleClick = () => {
     if (this.props.disabled) return false;
-    this.setState({
-      open: !this.state.open,
+
+    this.setState(() => {
+      if (this.state.open) {
+        return {
+          open: false,
+          hidden: true,
+        };
+      } else {
+        return {
+          open: true,
+          hidden: false,
+        };
+      }
     });
   };
 
@@ -119,17 +127,35 @@ class Select extends Component {
     if ("onChange" in this.props) {
       this.props.onChange(item);
     }
-    this.setState({
-      open: !this.state.open,
-      value: item.value,
-      label: item.label,
+
+    this.setState(() => {
+      if (this.state.open) {
+        return {
+          open: false,
+          hidden: true,
+          value: item.value,
+          label: item.label,
+        };
+      } else {
+        return {
+          open: true,
+          hidden: false,
+          value: item.value,
+          label: item.label,
+        };
+      }
     });
   };
 
   handleClickOutside = () => {
     if (this.props.disabled) return;
-    this.setState({
-      open: false,
+    this.setState(() => {
+      if (this.state.open) {
+        return {
+          open: false,
+          hidden: true,
+        };
+      }
     });
   };
 
@@ -141,8 +167,13 @@ class Select extends Component {
     const fldSelectDropdown = classnames({
       "fld-select_dropdown": true,
       "fld-select_dropdownWrap__animateSlideUp": this.state.open,
-      "fld-select_dropdownWrap__animateSlideDown": !this.state.open,
+      "fld-select_dropdownWrap__animateSlideDown": this.state.hidden,
     });
+    const fldSelectArrow = classnames({
+      "iconfont icon-jiantou-copy-copy fld-select_arrows": true,
+      "fld-select_arrows__animationIn": this.state.open,
+      "fld-select_arrows__animationOut": this.state.hidden
+    })
     return (
       <>
         <div
@@ -155,11 +186,7 @@ class Select extends Component {
             <div className="fld-select_input" onClick={this.handleClick}>
               {this.state.label}
               <i
-                className={`iconfont icon-jiantou-copy-copy fld-select_arrows ${
-                  this.state.open
-                    ? "fld-select_arrows__animationIn"
-                    : "fld-select_arrows__animationOut"
-                }`}
+                className={fldSelectArrow}
               ></i>
             </div>
             {/* 下拉框 */}

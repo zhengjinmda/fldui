@@ -8,6 +8,7 @@
   width: 120px;
   max-height: 200px;
   background: lightblue;
+  transform: scaleY(0);
 }
 
 .show {
