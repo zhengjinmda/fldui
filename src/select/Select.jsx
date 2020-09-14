@@ -140,7 +140,6 @@ class Select extends Component {
     });
     const fldSelectDropdown = classnames({
       "fld-select_dropdown": true,
-      "fld-select_dropdown__open": this.state.open,
       "fld-select_dropdownWrap__animateSlideUp": this.state.open,
       "fld-select_dropdownWrap__animateSlideDown": !this.state.open,
     });
