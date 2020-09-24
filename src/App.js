@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
-import { Button, ButtonByHook } from './button';
-import Toast from './toast'
-import Select from './select'
-import Test from './test.jsx'
+import { Button } from './button';
+import ReactDOM from 'react-dom';
+import Toast from './toast';
+import Select from './select';
+import IPhone from './iphone';
+import Tabs from './tabs';
+// import { Form,FormItem } from './form'
 const { Option } = Select;
+const { TabItem } = Tabs;
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.contextRef = React.createRef();
+    this.state = {
+    }
+  }
+
+  componentDidMount() {
+    this.contextDom = ReactDOM.findDOMNode(this.contextRef.current);
+    console.log(this.contextRef)
+    console.log(this.contextRef.current.offsetWidth)
+    console.log(this.contextDom)
+    console.log(this.contextDom.offsetWidth)
   }
 
   showToast = (type) => {
@@ -18,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <Test /> */}
+        <IPhone />
         <div>
           <h1>Button</h1>
           <h3>type</h3>
@@ -49,10 +63,10 @@ class App extends Component {
             <Option value="2">二</Option>
             <Option value="3">三</Option>
           </Select>
-          {/* <h3>disabled</h3>
-          <Select disabled={true} /> */}
+          <h3>disabled</h3>
+          <Select disabled={true} />
           <h3>onChange</h3>
-          <Select defaultValue='2' onChange={() => {console.log('select change')}}>
+          <Select defaultValue='2' onChange={() => { console.log('select change') }}>
             <Option value="1">一</Option>
             <Option value="2">二</Option>
             <Option value="3">三</Option>
@@ -66,6 +80,31 @@ class App extends Component {
           <Button type='danger' onClick={() => this.showToast('error')}>error toast</Button>
           <Button type='warning' onClick={() => this.showToast('warning')}>warning toast</Button>
           <Button type='info' onClick={() => this.showToast('info')}>info toast</Button>
+        </div>
+        <div>
+          <h1>Tabs</h1>
+          <Tabs>
+            <TabItem header="tab-01">
+              <div className="tabContent tabContent--01">
+                内容一
+                </div>
+            </TabItem>
+            <TabItem header="tab-02">
+              <div className="tabContent tabContent--02">
+                内容二
+                </div>
+            </TabItem>
+            <TabItem header="tab-03">
+              <div className="tabContent tabContent--03">
+                内容三
+                </div>
+            </TabItem>
+          </Tabs>
+          <div ref={this.contextRef}>
+            <div>
+              <p>hhhhhhhhh</p>
+            </div>
+          </div>
         </div>
       </div>
     );

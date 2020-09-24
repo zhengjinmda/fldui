@@ -1,0 +1,53 @@
+.fldSearchView {
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 3;
+  width: 682px;
+  height: 44px;
+  &_searchBar {
+    padding: 0;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    &__icon {
+      margin: 0 8px;
+      height: 44px;
+      line-height: 44px;
+      font-size: 20px;
+      color: #fff;
+      opacity: 0.8;
+    }
+    &__input {
+      transform: translateY(-1px);
+      width: 600px;
+      height: 44px;
+      font-size: 17px;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.8);
+      outline-style: none;
+      border: 0px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    &__fadeIn {
+      animation: fade-in 600ms ease-out forwards;
+    }
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  25% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

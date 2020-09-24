@@ -1,10 +1,38 @@
 {
-  "id": "",
-  "name": "",
+  "id": "2084778",
+  "name": "组件库",
   "font_family": "iconfont",
   "css_prefix_text": "icon-",
   "description": "",
   "glyphs": [
+    {
+      "icon_id": "16853921",
+      "name": "叉",
+      "font_class": "cha",
+      "unicode": "e675",
+      "unicode_decimal": 58997
+    },
+    {
+      "icon_id": "9021524",
+      "name": "右箭头",
+      "font_class": "youjiantou",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
+      "icon_id": "1089281",
+      "name": "购物袋",
+      "font_class": "buoumaotubiao01",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "393981",
+      "name": "apple",
+      "font_class": "apple1",
+      "unicode": "e6bc",
+      "unicode_decimal": 59068
+    },
     {
       "icon_id": "810221",
       "name": "箭头",

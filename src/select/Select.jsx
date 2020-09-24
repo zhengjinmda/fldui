@@ -36,15 +36,14 @@ class Select extends Component {
   static getDerivedStateFromProps(props, state) {
     let value, label;
     let options = [];
-    if (props !== undefined) {
-      if ("value" in props) {
-        if (props.value !== value) {
-          value = props.value;
-        }
-      } else {
-        value = state.value;
+    if ("value" in props) {
+      if (props.value !== value) {
+        value = props.value;
       }
+    } else {
+      value = state.value;
     }
+
     if (props.children === undefined && props.options) {
       options = props.options;
       props.options.forEach((item) => {
@@ -61,17 +60,6 @@ class Select extends Component {
       label,
       options,
     };
-  }
-
-  componentDidMount() {
-    if (this.props.children === undefined) {
-      this.setState({ options: this.props.options });
-    } else {
-      let el = Select.getOptions(this.props.children);
-      this.setState({
-        options: el,
-      });
-    }
   }
 
   // 获取 options
@@ -159,6 +147,13 @@ class Select extends Component {
     });
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps.value !== this.state.value) {
+      // return false
+    }
+    return true
+  }
+
   render() {
     const fldSelect = classnames({
       "fld-select": true,
@@ -172,8 +167,8 @@ class Select extends Component {
     const fldSelectArrow = classnames({
       "iconfont icon-jiantou-copy-copy fld-select_arrows": true,
       "fld-select_arrows__animationIn": this.state.open,
-      "fld-select_arrows__animationOut": this.state.hidden
-    })
+      "fld-select_arrows__animationOut": this.state.hidden,
+    });
     return (
       <>
         <div
@@ -185,9 +180,7 @@ class Select extends Component {
             {/* 模拟input 框 */}
             <div className="fld-select_input" onClick={this.handleClick}>
               {this.state.label}
-              <i
-                className={fldSelectArrow}
-              ></i>
+              <i className={fldSelectArrow}></i>
             </div>
             {/* 下拉框 */}
             <div className={fldSelectDropdown} style={this.props.style}>

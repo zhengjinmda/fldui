@@ -1,7 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
-class Option extends Component {
-
-}
+class Option extends Component {}
 
 export default Option;
