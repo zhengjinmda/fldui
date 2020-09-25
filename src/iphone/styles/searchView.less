@@ -1,0 +1,88 @@
+.fldSearchView {
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 3;
+  width: 682px;
+  height: 44px;
+
+  &-searchBar {
+    padding: 0;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+
+    &_icon {
+      margin: 0 8px;
+      height: 44px;
+      line-height: 44px;
+      font-size: 20px;
+      color: #fff;
+      opacity: 0.8;
+      cursor: pointer;
+    }
+
+    &_input {
+      transform: translateY(-1px);
+      width: 600px;
+      height: 43px;
+      font-size: 17px;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.8);
+      outline-style: none;
+      border: 0px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &_fadeIn {
+      animation: fade-in 800ms ease-out forwards;
+    }
+  }
+
+  &-dropdown {
+    box-sizing: border-box;
+    font-size: 12px;
+    color: #1d1d1f;
+    background: #fff;
+    opacity: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    &_content {
+      padding: 24px 0 18px;
+
+      &__title {
+        margin-left: 40px;
+        font-size: 8px;
+        color: #6e6e73;
+      }
+
+      &__list {
+        padding-top: 5px;
+      }
+
+      &__dropDownItem {
+        margin: 4px 0;
+        padding: 0 48px;
+        height: 24px;
+        line-height: 24px;
+        list-style-type: none;
+
+        &:hover {
+          background-color: #f5f5f7;
+          color: #2997ff;
+        }
+
+        &___fadeIn {
+          animation: dropdown-item-fade-in 600ms ease-out forwards;
+        }
+      }
+    }
+
+    &_show {
+      animation: dropdown-fade-in 600ms ease-in forwards;
+    }
+  }
+}

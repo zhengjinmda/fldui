@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './navbar';
 import HomePage from './homePage';
 import Mac from './mac';
+import Footer from './footer';
 import './main.less';
 
 class Main extends Component {
@@ -12,13 +13,16 @@ class Main extends Component {
   }
   render() {
     return (
-      <Router>
-        <div className="fld-iPhone_ad"></div>
-        <NavBar />
-        <div className="fld-iPhone_CoverLayer"></div>
-        <Route path="/" exact component={HomePage}></Route>
-        <Route path="/mac/" exact component={Mac}></Route>
-      </Router>
+      <>
+        <Router>
+          <div className="fld-iPhone_ad"></div>
+          <NavBar />
+          <div className="fld-iPhone_CoverLayer"></div>
+          <Route path="/" exact component={HomePage}></Route>
+          <Route path="/mac/" exact component={Mac}></Route>
+        </Router>
+        <Footer />
+      </>
     );
   }
 }

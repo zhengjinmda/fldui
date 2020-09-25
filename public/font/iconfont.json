@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "2901872",
+      "name": "Mac",
+      "font_class": "Mac",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "4338082",
+      "name": "MacBook Pro",
+      "font_class": "MacBookPro",
+      "unicode": "e739",
+      "unicode_decimal": 59193
+    },
+    {
       "icon_id": "16853921",
       "name": "叉",
       "font_class": "cha",
