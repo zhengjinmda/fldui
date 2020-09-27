@@ -56,12 +56,15 @@
     left: 0;
     width: 100%;
     height: 100%;
+    display: none;
     background: rgba(0, 0, 0, 0.48);
     opacity: 0;
     &_fadeIn {
+      display: block;
       animation: shadow-fade-in 200ms ease-in forwards;
     }
     &_fadeOut {
+      display: none;
       animation: shadow-fade-out 600ms ease-in forwards;
     }
   }

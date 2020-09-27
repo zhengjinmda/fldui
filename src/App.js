@@ -19,10 +19,6 @@ class App extends Component {
 
   componentDidMount() {
     this.contextDom = ReactDOM.findDOMNode(this.contextRef.current);
-    console.log(this.contextRef)
-    console.log(this.contextRef.current.offsetWidth)
-    console.log(this.contextDom)
-    console.log(this.contextDom.offsetWidth)
   }
 
   showToast = (type) => {

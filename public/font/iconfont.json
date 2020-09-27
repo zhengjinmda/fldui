@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "4338084",
+      "name": "macOS",
+      "font_class": "macOS",
+      "unicode": "e73a",
+      "unicode_decimal": 59194
+    },
+    {
       "icon_id": "2901872",
       "name": "Mac",
       "font_class": "Mac",
